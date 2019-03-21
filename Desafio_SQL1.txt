@@ -1,0 +1,44 @@
+1. ¿Cómo puedo recuperar toda la información de la tabla facilities?
+
+SELECT * FROM facilities;
+
+_____________________________________________________________________
+2. ¿Cómo se recupera la lista de sólo las instalaciones y sus costos?
+
+SELECT name, membercost, guestcost, initialoutlay, monthlymaintenance
+FROM facilities;
+
+_____________________________________________________________________
+3. ¿Cómo puede producir una lista de instalaciones que se cargan a los miembros?
+
+SELECT id, name, membercost
+FROM facilities
+WHERE membercost>0
+;
+
+_____________________________________________________________________
+4. ¿Cómo puede producir una lista de instalaciones que se cargan a los miembros, y
+que la carga es menos de 1/50 de la media de mantenimiento? Devolver el id, nombre instalación, coste miembro, y el mantenimiento mensual de las
+instalaciones en cuestión.
+
+SELECT id, name, membercost, monthlymaintenance
+FROM facilities
+WHERE membercost < (monthlymaintenance / 50)
+;
+
+_____________________________________________________________________
+5. ¿Cómo puede producir una lista de todas las instalaciones con la palabra 'Tennis' en
+su nombre?
+
+SELECT id, name, membercost, guestcost, initialoutlay, monthlymaintenance
+FROM facilities
+WHERE name LIKE '%Tennis%'
+;
+
+_____________________________________________________________________
+6. ¿Puede recuperar los detalles de las instalaciones con ID 1 y 5? Trata de hacerlo sin
+utilizar el operador OR
+
+SELECT *
+FROM facilities
+WHERE id IN (1,5);
